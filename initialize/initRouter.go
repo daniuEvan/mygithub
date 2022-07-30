@@ -7,6 +7,7 @@ package initialize
 
 import (
 	"github.com/daniuEvan/mygithub/global"
+	"github.com/daniuEvan/mygithub/internal/router"
 	"github.com/daniuEvan/mygithub/middleware"
 	"github.com/daniuEvan/mygithub/utils"
 	"github.com/gin-contrib/pprof"
@@ -24,7 +25,14 @@ func initRouters() *gin.Engine {
 		defaultEngine = gin.New()
 	}
 	defaultEngine.Use(middleware.Cors(), middleware.GinLogger(global.Logger)) // 跨域
-	//apiGroup := defaultEngine.Group("api/v1")
-	//userRouter.InitUserRouter(apiGroup)
+
+	spiderRouter := router.RouterGroupApp.SpiderRouterGroup
+
+	// 方便统一路由
+	apiGroup := defaultEngine.Group("api")
+	v1 := apiGroup.Group("v1")
+	{
+		spiderRouter.InitAwesomeRouterV1(v1)
+	}
 	return defaultEngine
 }

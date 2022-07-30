@@ -20,7 +20,7 @@ func Success(ctx *gin.Context, data interface{}, msg string) {
 	Response(ctx, http.StatusOK, 200, data, msg)
 }
 
-// Failed response
-func Failed(ctx *gin.Context, data interface{}, msg string) {
+// Fail response
+func Fail(ctx *gin.Context, data interface{}, msg string) {
 	Response(ctx, http.StatusOK, 400, data, msg)
 }
