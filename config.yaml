@@ -1,0 +1,65 @@
+host: 0.0.0.0
+port: 8000
+language: zh       # 语言 zh/en
+
+log:
+  logLevel: info               # debug, info, warn, error, dpanic, panic, fatal
+  logPath: ./logs/api.log        # 日志绝对路径
+  logInConsole: true            # 打印到控制台
+  maxSize: 1000                 # 在进行切割之前，日志文件的最大大小（以MB为单位)
+  maxBackups: 10                # 保留旧文件的最大个数
+  maxAge: 30                    # 保留旧文件的最大天数
+  compress: false               # 是否压缩/归档旧文件
+
+database:
+  dbType: postgres   # "postgres" / "mysql"
+  table_prefix :     #  表前缀
+  # backend db mysql conf
+  mysql:
+    dbname: mygithub
+    host:
+    port: 
+    username: 
+    password:
+    maxIdleConns: 10           # 空闲连接池中连接的最大数量
+    maxOpenConns: 3000         # 打开数据库连接的最大数量
+    connMaxLifetime: 360       # 连接可复用的最大时间(单位:s)
+
+  # backend db pg conf
+  postgres:
+    dbname:
+    schema:
+    host:
+    port:
+    username:
+    password:
+    maxIdleConns: 10           # 空闲连接池中连接的最大数量
+    maxOpenConns: 3000         # 打开数据库连接的最大数量
+    connMaxLifetime: 360       # 连接可复用的最大时间(单位:s)
+
+#cache:
+#  # redis conf
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+#    db: 0
+#    username:
+#    password:
+#    connectTimeout: 1000           # 单位:ms
+#    poolMaxIdleConns: 10           # 空闲连接池中连接的最大数量
+#    poolMaxOpenConns: 5000          # 打开数据库连接的最大数量
+#    poolConnMaxLifetime: 360       # 连接可复用的最大时间(单位:s)
+#
+#
+#auth:
+#  jwt:
+#    tokenKey: x-token
+#    signingKey: qweqweq2341dsf  # 盐
+#    effectiveTime: 3600000000    # 有效时间(单位:s)
+#  ldap:
+#    ldapHost: 101.201.211.113
+#    ldapPort: 389
+#    baseDN: cn=dev-zu,ou=product-unit-bumen,dc=example,dc=com
+#    searchProperty: cn   # cn/uid
+#    bindDN: cn=admin,dc=example,dc=com
+#    bindPassword: admin
