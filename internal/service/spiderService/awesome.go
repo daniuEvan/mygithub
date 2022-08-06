@@ -6,7 +6,6 @@
 package spiderService
 
 import (
-	"fmt"
 	"github.com/daniuEvan/mygithub/global"
 	"github.com/daniuEvan/mygithub/spider/awesomeSpider"
 )
@@ -14,7 +13,6 @@ import (
 type AwesomeService struct{}
 
 func (a *AwesomeService) AwesomeSpider(langCategory string) error {
-	dataResSlice, err := awesomeSpider.AwesomeSpider(langCategory, global.Logger)
-	fmt.Println(dataResSlice)
+	_, err := awesomeSpider.AwesomeSpider(langCategory, global.Logger)
 	return err
 }

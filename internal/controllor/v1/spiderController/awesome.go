@@ -22,6 +22,7 @@ func (a *AwesomeController) GetGithubData(ctx *gin.Context) {
 	case "python":
 		err := awesomeService.AwesomeSpider("awesome-" + langCategory)
 		if err != nil {
+			global.Logger.Error("awesome-python service error.", zap.String("error msg", err.Error()))
 			response.Response(ctx, http.StatusInternalServerError, 500, nil, "awesome-python service error.")
 			return
 		}
@@ -29,6 +30,7 @@ func (a *AwesomeController) GetGithubData(ctx *gin.Context) {
 	case "go":
 		err := awesomeService.AwesomeSpider("awesome-" + langCategory)
 		if err != nil {
+			global.Logger.Error("awesome-go service error.", zap.String("error msg", err.Error()))
 			response.Response(ctx, http.StatusInternalServerError, 500, nil, "awesome-go service error.")
 			return
 		}

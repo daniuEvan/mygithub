@@ -31,6 +31,12 @@ func InitStep() (router *gin.Engine) {
 		log.Fatalf("自定义校验器初始化失败:%s", err.Error())
 	}
 
+	// 初始化 orm 数据库
+	err = InitOrm()
+	if err != nil {
+		log.Fatalf("orm 数据库初始化失败:%s", err.Error())
+	}
+
 	// 初始化 爬虫定时器
 	initSpiderCron()
 

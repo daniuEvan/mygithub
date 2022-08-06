@@ -88,16 +88,16 @@ func awesomePythonSpider(enterUrl string, logger *zap.Logger) (dataResSlice []Da
 	})
 
 	c.OnRequest(func(r *colly.Request) {
-		logger.Info("OnRequest :", zap.String("url", r.URL.String()))
+		logger.Info("PythonSpiderOnRequest :", zap.String("url", r.URL.String()))
 		//fmt.Println("Visiting", r.URL.String())
 	})
 
 	c.OnResponse(func(r *colly.Response) {
-		logger.Info("OnResponse :", zap.String("url", fmt.Sprintf("Response %s: %d bytes", r.Request.URL, len(r.Body))))
+		//logger.Info("PythonSpiderOnResponse :", zap.String("url", fmt.Sprintf("Response %s: %d bytes", r.Request.URL, len(r.Body))))
 	})
 
 	c.OnError(func(r *colly.Response, err error) {
-		logger.Error("OnError", zap.String("error", err.Error()))
+		//logger.Error("OnError", zap.String("error", err.Error()))
 	})
 
 	err = c.Visit(enterUrl)
